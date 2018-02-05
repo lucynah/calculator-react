@@ -89,6 +89,19 @@ class Calculator extends React.Component {
     }
 
     onNumberClick(number) {
+        if(this.state.numberOnDisplay === "" && number === '0'){
+            return;
+        }
+        if(this.state.numberOnDisplay.indexOf('.') > -1 && number === '.'){
+            return;
+        }
+        if(this.state.numberOnDisplay === "" && number === '.'){
+            this.setState(function (prevState, props) {
+                return {
+                    numberOnDisplay: '0'
+                };
+            });
+        }
         this.setState(function (prevState, props) {
             return {
                 numberOnDisplay: prevState.numberOnDisplay + number.toString()
