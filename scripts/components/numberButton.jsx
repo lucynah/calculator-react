@@ -1,6 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const buttonStyle = {
+    color: "black",
+    background: "white",
+    font: "bold",
+    width: "50px",
+    height: "50px",
+    fontSize: "16px",
+    borderRadius: "4px"
+}
+
 export default class NumberButton extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +20,7 @@ export default class NumberButton extends React.Component {
         this.onClickHandler = this.onClickHandler.bind(this);
     }
     render() {
-        return <button onClick={this.onClickHandler}> {this.props.numberToDisplay} </button>
+        return <button style={buttonStyle} onClick={this.onClickHandler}> {this.props.numberToDisplay} </button>
     }
     onClickHandler(e) {
         this.props.onClickCustomHandler(this.props.numberToDisplay);
@@ -18,6 +28,6 @@ export default class NumberButton extends React.Component {
 }
 
 NumberButton.propTypes = {
-    numberToDisplay: PropTypes.number.isRequired,
+    numberToDisplay: PropTypes.string,
     onClickCustomHandler: PropTypes.func
 };
