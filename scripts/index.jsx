@@ -17,6 +17,7 @@ class Calculator extends React.Component {
         };
         this.onNumberClick = this.onNumberClick.bind(this);
         this.onMethodClick = this.onMethodClick.bind(this);
+        this.onClearClick = this.onClearClick.bind(this);
     };
     render() {
         return <div>
@@ -37,7 +38,18 @@ class Calculator extends React.Component {
             <NumberButton numberToDisplay={'.'} onClickCustomHandler={this.onNumberClick} />
             <MethodButton methodToDisplay={'='} method={Methods.CALCULATE} onClickCustomHandler={this.onMethodClick} />
             <MethodButton methodToDisplay={'-'} method={Methods.SUB} onClickCustomHandler={this.onMethodClick} />
+            <MethodButton methodToDisplay={'C'} method={Methods.CLEAR} onClickCustomHandler={this.onClearClick} />
         </div>
+    }
+
+    onClearClick() {
+        this.setState(function (prevState, props) {
+            return {
+                numberOnDisplay: '',
+                currentMethod: Methods.ADD,
+                solution: 0
+            };
+        });
     }
 
     onMethodClick(method) {
