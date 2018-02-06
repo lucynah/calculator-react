@@ -81,7 +81,7 @@ class Calculator extends React.Component {
             this.setState(function (prevState, props) {
                 return {
                     solution: prevState.solution,
-                    numberOnDisplay: prevState.solution,
+                    numberOnDisplay: prevState.solution.toString(),
                     currentMethod: method
                 };
             });
