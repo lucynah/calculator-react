@@ -3,7 +3,8 @@ const Methods = Object.freeze({
     SUB: Symbol("-"),
     MULTIPLY: Symbol("*"),
     DIVIDE: Symbol("/"),
-    CALCULATE: Symbol("=")
+    CALCULATE: Symbol("="),
+    C: Symbol("C")
 });
 
 export default Methods;
