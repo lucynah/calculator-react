@@ -99,7 +99,16 @@ class Calculator extends React.Component {
 
     onNumberClick(number) {
         const isCurrentNumberASolution = this.state.numberOnDisplay === this.state.solution.toString();
-        
+
+        if (this.state.currentMethod === Methods.CALCULATE) {
+            this.setState(function (prevState, props) {
+                return {
+                    numberOnDisplay: '',
+                    currentMethod: Methods.ADD,
+                    solution: 0
+                }
+            });
+        }
         if ((this.state.numberOnDisplay === '' || isCurrentNumberASolution) && number === '0') {
             return;
         }
