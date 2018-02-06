@@ -44,8 +44,8 @@ class Calculator extends React.Component {
         if (this.state.currentMethod === Methods.ADD) {
             this.setState(function (prevState, props) {
                 return {
-                    solution: prevState.solution + prevState.numberOnDisplay,
-                    numberOnDisplay: 0,
+                    solution: prevState.solution + parseFloat(prevState.numberOnDisplay),
+                    numberOnDisplay: '',
                     currentMethod: method
                 };
             });
@@ -53,8 +53,8 @@ class Calculator extends React.Component {
         else if (this.state.currentMethod === Methods.SUB) {
             this.setState(function (prevState, props) {
                 return {
-                    solution: prevState.solution - prevState.numberOnDisplay,
-                    numberOnDisplay: 0,
+                    solution: prevState.solution - parseFloat(prevState.numberOnDisplay),
+                    numberOnDisplay: '',
                     currentMethod: method
                 };
             })
@@ -62,8 +62,8 @@ class Calculator extends React.Component {
         else if (this.state.currentMethod === Methods.DIVIDE) {
             this.setState(function (prevState, props) {
                 return {
-                    solution: prevState.solution / prevState.numberOnDisplay,
-                    numberOnDisplay: 0,
+                    solution: prevState.solution / parseFloat(prevState.numberOnDisplay),
+                    numberOnDisplay: '',
                     currentMethod: method
                 };
             });
@@ -71,8 +71,8 @@ class Calculator extends React.Component {
         else if (this.state.currentMethod === Methods.MULTIPLY) {
             this.setState(function (prevState, props) {
                 return {
-                    solution: prevState.solution * prevState.numberOnDisplay,
-                    numberOnDisplay: 0,
+                    solution: prevState.solution * parseFloat(prevState.numberOnDisplay),
+                    numberOnDisplay: '',
                     currentMethod: method
                 };
             });

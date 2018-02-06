@@ -4,6 +4,6 @@ import PropTypes from "prop-types";
 export default class Display extends React.Component {
     
     render(){
-        return <h1>{this.props.content}</h1>
+        return <h1>{this.props.content} &nbsp;</h1>
     }
 }
