@@ -43,45 +43,54 @@ class Calculator extends React.Component {
     onMethodClick(method) {
         if (this.state.currentMethod === Methods.ADD) {
             this.setState(function (prevState, props) {
+                const solution = prevState.solution + parseFloat(prevState.numberOnDisplay);
+
                 return {
-                    solution: prevState.solution + parseFloat(prevState.numberOnDisplay),
-                    numberOnDisplay: '',
+                    solution: solution,
+                    numberOnDisplay: solution.toString(),
                     currentMethod: method
                 };
             });
         }
         else if (this.state.currentMethod === Methods.SUB) {
             this.setState(function (prevState, props) {
+                const solution = prevState.solution - parseFloat(prevState.numberOnDisplay);
+
                 return {
-                    solution: prevState.solution - parseFloat(prevState.numberOnDisplay),
-                    numberOnDisplay: '',
+                    solution: solution,
+                    numberOnDisplay: solution.toString(),
                     currentMethod: method
                 };
             })
         }
         else if (this.state.currentMethod === Methods.DIVIDE) {
             this.setState(function (prevState, props) {
+                const solution = prevState.solution / parseFloat(prevState.numberOnDisplay);
+
                 return {
-                    solution: prevState.solution / parseFloat(prevState.numberOnDisplay),
-                    numberOnDisplay: '',
+                    solution: solution,
+                    numberOnDisplay: solution.toString(),
                     currentMethod: method
                 };
             });
         }
         else if (this.state.currentMethod === Methods.MULTIPLY) {
             this.setState(function (prevState, props) {
+                const solution = prevState.solution * parseFloat(prevState.numberOnDisplay);
+
                 return {
-                    solution: prevState.solution * parseFloat(prevState.numberOnDisplay),
-                    numberOnDisplay: '',
+                    solution: solution,
+                    numberOnDisplay: solution.toString(),
                     currentMethod: method
                 };
             });
         }
         if (method === Methods.CALCULATE) {
             this.setState(function (prevState, props) {
+
                 return {
                     solution: prevState.solution,
-                    numberOnDisplay: prevState.solution,
+                    numberOnDisplay: prevState.solution.toString(),
                     currentMethod: method
                 };
             });
@@ -89,24 +98,36 @@ class Calculator extends React.Component {
     }
 
     onNumberClick(number) {
-        if(this.state.numberOnDisplay === "" && number === '0'){
+        const isCurrentNumberASolution = this.state.numberOnDisplay === this.state.solution.toString();
+        
+        if ((this.state.numberOnDisplay === '' || isCurrentNumberASolution) && number === '0') {
             return;
         }
-        if(this.state.numberOnDisplay.indexOf('.') > -1 && number === '.'){
+        if (this.state.numberOnDisplay.indexOf('.') > -1 && number === '.' && !isCurrentNumberASolution) {
             return;
         }
-        if(this.state.numberOnDisplay === "" && number === '.'){
+        if ((this.state.numberOnDisplay === '' || isCurrentNumberASolution) && number === '.') {
             this.setState(function (prevState, props) {
                 return {
                     numberOnDisplay: '0'
                 };
             });
         }
-        this.setState(function (prevState, props) {
-            return {
-                numberOnDisplay: prevState.numberOnDisplay + number.toString()
-            };
-        });
+        if (isCurrentNumberASolution && number !== '.') {
+            this.setState(function (prevState, props) {
+                return {
+                    numberOnDisplay: number.toString()
+                };
+            });
+        }
+        else {
+
+            this.setState(function (prevState, props) {
+                return {
+                    numberOnDisplay: prevState.numberOnDisplay + number.toString()
+                };
+            });
+        }
     }
 }
 
