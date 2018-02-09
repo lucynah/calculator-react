@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const buttonStyle = {
+    display: "inline-block",
+    textAlign: "center",
+    borderStyle: "solid",
     color: "black",
     background: "white",
     font: "bold",
@@ -20,7 +23,7 @@ export default class NumberButton extends React.Component {
         this.onClickHandler = this.onClickHandler.bind(this);
     }
     render() {
-        return <button style={buttonStyle} onClick={this.onClickHandler}> {this.props.numberToDisplay} </button>
+        return <div style={buttonStyle} onClick={this.onClickHandler}> {this.props.numberToDisplay} </div>
     }
     onClickHandler(e) {
         this.props.onClickCustomHandler(this.props.numberToDisplay);

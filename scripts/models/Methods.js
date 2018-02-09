@@ -4,7 +4,7 @@ const Methods = Object.freeze({
     MULTIPLY: Symbol("*"),
     DIVIDE: Symbol("/"),
     CALCULATE: Symbol("="),
-    C: Symbol("C")
+    CLEAR: Symbol("C")
 });
 
 export default Methods;
