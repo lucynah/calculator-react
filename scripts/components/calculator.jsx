@@ -65,13 +65,13 @@ export default class Calculator extends React.Component {
 
     onKeyDown(event) {
         const keyCode = event.keyCode;
-        if (keyCode === 13 || keyCode === 61) {
+        if (keyCode === 13 || (keyCode === 187 && !this.state.isShiftPressed)) {
             this.onMethodClick(Methods.CALCULATE);
         }
         if ((keyCode < 58 && keyCode > 47) || keyCode === 190) {
             this.onNumberClick(event.key);
         }
-        if (keyCode === 187) {
+        if (keyCode === 187 && this.state.isShiftPressed) {
             this.onMethodClick(Methods.ADD);
         }
         if (keyCode === 189) {
@@ -82,6 +82,9 @@ export default class Calculator extends React.Component {
         }
         if (keyCode === 191) {
             this.onMethodClick(Methods.DIVIDE);
+        }
+        if (keyCode === 27) {
+            this.onClearClick();
         }
     }
 
